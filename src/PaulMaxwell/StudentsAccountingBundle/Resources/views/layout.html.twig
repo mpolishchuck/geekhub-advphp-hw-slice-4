@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Students Accounting{% endblock %}
+
+{% block mainlink %}<a class="navbar-brand" href="{{ url('paul_maxwell_students_accounting_homepage') }}">Students Accounting</a>{% endblock %}
+
+{% block navmenu %}
+    <ul class="nav navbar-nav">
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_homepage' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_homepage') }}">Dashboard</a></li>
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_specialities' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_specialities') }}">Specialities</a></li>
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_groups' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_groups') }}">Groups</a></li>
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_students' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_students') }}">Students</a></li>
+    </ul>
+{% endblock %}

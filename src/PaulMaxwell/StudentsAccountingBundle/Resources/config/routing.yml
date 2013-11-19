@@ -1,0 +1,15 @@
+paul_maxwell_students_accounting_homepage:
+    pattern:  /
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:index }
+
+paul_maxwell_students_accounting_specialities:
+    pattern: /specialities
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:specialitiesList }
+
+paul_maxwell_students_accounting_groups:
+    pattern: /groups
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:groupsList }
+
+paul_maxwell_students_accounting_students:
+    pattern: /students
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }

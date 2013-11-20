@@ -18,14 +18,7 @@ class ReportController extends Controller
          */
         $teacher = $teacherRepository->findOneById($id_teacher);
 
-        /**
-         * Shaman three hands
-         * Don't touch, works exclusively on magic
-         */
-        $groupsId = array_map(function (Group $group) {
-            return $group->getId();
-        }, $teacher->getGroups()->toArray());
-        $groups = $groupRepository->findById($groupsId);
+        $groups = $teacher->getGroups();
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Report:groups_of_teacher.html.twig', array(
             'groups' => $groups,
@@ -42,14 +35,7 @@ class ReportController extends Controller
          */
         $group = $groupRepository->findOneById($id_group);
 
-        /**
-         * Shaman three hands
-         * Don't touch, works exclusively on magic
-         */
-        $teachersId = array_map(function (Teacher $teacher) {
-            return $teacher->getId();
-        }, $group->getTeachers()->toArray());
-        $teachers = $teacherRepository->findById($teachersId);
+        $teachers = $group->getTeachers();
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Report:teachers_of_group.html.twig', array(
             'teachers' => $teachers,

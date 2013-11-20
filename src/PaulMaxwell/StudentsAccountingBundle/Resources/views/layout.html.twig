@@ -8,7 +8,8 @@
     <ul class="nav navbar-nav">
         <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_homepage' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_homepage') }}">Dashboard</a></li>
         <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_specialities' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_specialities') }}">Specialities</a></li>
-        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_groups' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_groups') }}">Groups</a></li>
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_groups' or app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_groups_by_speciality' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_groups') }}">Groups</a></li>
         <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_students' or app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_students_by_group' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_students') }}">Students</a></li>
+        <li{% if app.request.attributes.get('_route') == 'paul_maxwell_students_accounting_teachers' %} class="active"{% endif %}><a href="{{ url('paul_maxwell_students_accounting_teachers') }}">Teachers</a></li>
     </ul>
 {% endblock %}

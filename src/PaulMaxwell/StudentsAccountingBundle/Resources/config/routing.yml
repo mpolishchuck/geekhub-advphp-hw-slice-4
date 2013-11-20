@@ -10,6 +10,11 @@ paul_maxwell_students_accounting_groups:
     pattern: /groups
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:groupsList }
 
+paul_maxwell_students_accounting_groups_by_speciality:
+    pattern: /groups/byspeciality/{id_speciality}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:groupsList }
+    requirements: { id_speciality: "[0-9]+" }
+
 paul_maxwell_students_accounting_students:
     pattern: /students
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
@@ -18,3 +23,7 @@ paul_maxwell_students_accounting_students_by_group:
     pattern: /students/bygroup/{id_group}
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
     requirements: { id_group: "[0-9]+" }
+
+paul_maxwell_students_accounting_teachers:
+    pattern: /teachers
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:teachersList }

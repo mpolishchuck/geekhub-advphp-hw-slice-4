@@ -2,6 +2,7 @@
 
 namespace PaulMaxwell\StudentsAccountingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping;
 
 /**
@@ -26,6 +27,11 @@ class Speciality {
      * @Mapping\Column(type="string", length=128)
      */
     protected $title;
+
+    /**
+     * @Mapping\OneToMany(targetEntity="Group", mappedBy="speciality")
+     */
+    protected $groups;
 
     /**
      * @return integer
@@ -65,5 +71,13 @@ class Speciality {
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

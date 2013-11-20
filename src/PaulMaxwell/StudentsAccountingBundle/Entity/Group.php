@@ -21,7 +21,7 @@ class Group
 
     /**
      * @Mapping\JoinColumn(name="id_speciality", nullable=false)
-     * @Mapping\ManyToOne(targetEntity="Speciality", cascade={"persist"})
+     * @Mapping\ManyToOne(targetEntity="Speciality", cascade={"persist"}, inversedBy="groups")
      */
     protected $speciality;
 

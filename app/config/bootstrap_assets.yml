@@ -1,0 +1,30 @@
+assetic:
+    assets:
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.css
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap-theme.css
+            output: assets/css/bootstrap.css
+        bootstrap_min_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css
+            output: assets/css/bootstrap.min.css
+        bootstrap_font_eot:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/fonts/glyphicons-halflings-regular.eot
+            output: assets/fonts/glyphicons-halflings-regular.eot
+        bootstrap_font_svg:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
+            output: assets/fonts/glyphicons-halflings-regular.svg
+        bootstrap_font_ttf:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
+            output: assets/fonts/glyphicons-halflings-regular.ttf
+        bootstrap_font_woff:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
+            output: assets/fonts/glyphicons-halflings-regular.woff
+        bootstrap_js:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js
+            output: assets/js/bootstrap.js
+        bootstrap_min_js:
+            input: %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
+            output: assets/js/bootstrap.min.js

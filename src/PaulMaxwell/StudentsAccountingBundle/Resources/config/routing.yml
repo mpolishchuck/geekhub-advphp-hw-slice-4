@@ -1,0 +1,44 @@
+paul_maxwell_students_accounting_homepage:
+    pattern:  /
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:index }
+
+paul_maxwell_students_accounting_specialities:
+    pattern: /specialities
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:specialitiesList }
+
+paul_maxwell_students_accounting_groups:
+    pattern: /groups
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:groupsList }
+
+paul_maxwell_students_accounting_groups_by_speciality:
+    pattern: /groups/byspeciality/{id_speciality}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:groupsList }
+    requirements: { id_speciality: "[0-9]+" }
+
+paul_maxwell_students_accounting_students:
+    pattern: /students
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
+
+paul_maxwell_students_accounting_students_by_group:
+    pattern: /students/bygroup/{id_group}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
+    requirements: { id_group: "[0-9]+" }
+
+paul_maxwell_students_accounting_students_remove:
+    pattern: /students/remove/{id}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsRemove }
+    requirements: { id_group: "[0-9]+" }
+
+paul_maxwell_students_accounting_teachers:
+    pattern: /teachers
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:teachersList }
+
+paul_maxwell_students_accounting_groups_of_teacher:
+    pattern: /groups/byteacher/{id_teacher}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Report:groupsOfTeacher }
+    requirements: { id_teacher: "[0-9]+" }
+
+paul_maxwell_students_accounting_teachers_of_group:
+    pattern: /teachers/bygroup/{id_group}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Report:teachersOfGroup }
+    requirements: { id_group: "[0-9]+" }

@@ -1,0 +1,4 @@
+paul_maxwell_students_accounting:
+    resource: "@PaulMaxwellStudentsAccountingBundle/Resources/config/routing.yml"
+    prefix:   /
+

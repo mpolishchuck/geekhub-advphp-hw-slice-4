@@ -26,7 +26,7 @@ class Student
 
     /**
      * @Mapping\JoinColumn(name="id_group", nullable=false)
-     * @Mapping\ManyToOne(targetEntity="Group", cascade={"persist"})
+     * @Mapping\ManyToOne(targetEntity="Group", cascade={"persist"}, inversedBy="students")
      */
     protected $group;
 

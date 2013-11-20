@@ -1,0 +1,22 @@
+{% extends "PaulMaxwellStudentsAccountingBundle::layout.html.twig" %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for n, speciality in specialities %}
+            <tr>
+                <td>{{ n+1 }}</td>
+                <td>{{ speciality.code }}</td>
+                <td>{{ speciality.title }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

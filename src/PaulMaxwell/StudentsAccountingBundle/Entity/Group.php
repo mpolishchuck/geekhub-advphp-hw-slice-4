@@ -47,6 +47,11 @@ class Group
     protected $teachers;
 
     /**
+     * @Mapping\OneToMany(targetEntity="Student", mappedBy="group")
+     */
+    protected $students;
+
+    /**
      * @return integer
      */
     public function getId()
@@ -124,5 +129,13 @@ class Group
     public function getTeachers()
     {
         return $this->teachers;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }

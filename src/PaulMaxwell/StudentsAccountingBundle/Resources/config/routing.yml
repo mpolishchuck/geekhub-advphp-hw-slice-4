@@ -13,3 +13,8 @@ paul_maxwell_students_accounting_groups:
 paul_maxwell_students_accounting_students:
     pattern: /students
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
+
+paul_maxwell_students_accounting_students_by_group:
+    pattern: /students/bygroup/{id_group}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
+    requirements: { id_group: "[0-9]+" }

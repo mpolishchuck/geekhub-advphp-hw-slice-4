@@ -1,0 +1,28 @@
+{% extends "PaulMaxwellStudentsAccountingBundle::layout.html.twig" %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Speciality</th>
+                <th>Year founded</th>
+                <th>Course</th>
+                <th>Students count</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for n, group in groups %}
+            <tr>
+                <td>{{ n+1 }}</td>
+                <td>{{ group.title }}</td>
+                <td>{{ group.speciality.code }}  {{ group.speciality.title }}</td>
+                <td>{{ group.foundingYear.title }}</td>
+                <td>{{ group.course }}</td>
+                <td><a href="{{ url('paul_maxwell_students_accounting_students_by_group', {'id_group': group.id}) }}">{{ group.students.count }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

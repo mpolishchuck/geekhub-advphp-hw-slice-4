@@ -11,6 +11,7 @@
                 <th>Year founded</th>
                 <th>Course</th>
                 <th>Students count</th>
+                <th>Teachers involved</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                 <td>{{ group.foundingYear.title }}</td>
                 <td>{{ group.course }}</td>
                 <td><a href="{{ url('paul_maxwell_students_accounting_students_by_group', {'id_group': group.id}) }}">{{ group.students.count }}</a></td>
+                <td>{{ group.teachers.count }}</td>
             </tr>
         {% endfor %}
         </tbody>

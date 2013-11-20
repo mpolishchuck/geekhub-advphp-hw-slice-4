@@ -23,7 +23,7 @@
                 <td>{{ group.foundingYear.title }}</td>
                 <td>{{ group.course }}</td>
                 <td><a href="{{ url('paul_maxwell_students_accounting_students_by_group', {'id_group': group.id}) }}">{{ group.students.count }}</a></td>
-                <td>{{ group.teachers.count }}</td>
+                <td><a href="{{ url('paul_maxwell_students_accounting_teachers_of_group', {'id_group': group.id}) }}">{{ group.teachers.count }}</a></td>
             </tr>
         {% endfor %}
         </tbody>

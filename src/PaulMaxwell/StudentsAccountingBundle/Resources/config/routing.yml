@@ -32,3 +32,13 @@ paul_maxwell_students_accounting_students_remove:
 paul_maxwell_students_accounting_teachers:
     pattern: /teachers
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:teachersList }
+
+paul_maxwell_students_accounting_groups_of_teacher:
+    pattern: /groups/byteacher/{id_teacher}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Report:groupsOfTeacher }
+    requirements: { id_teacher: "[0-9]+" }
+
+paul_maxwell_students_accounting_teachers_of_group:
+    pattern: /teachers/bygroup/{id_group}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Report:teachersOfGroup }
+    requirements: { id_group: "[0-9]+" }

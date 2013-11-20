@@ -3,11 +3,12 @@
 namespace PaulMaxwell\StudentsAccountingBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PaulMaxwell\StudentsAccountingBundle\Entity\Person;
 use Symfony\Component\Yaml\Yaml;
 
-class LoadPersonData implements FixtureInterface
+class LoadPersonData implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**

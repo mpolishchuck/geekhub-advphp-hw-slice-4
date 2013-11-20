@@ -3,10 +3,11 @@
 namespace PaulMaxwell\StudentsAccountingBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PaulMaxwell\StudentsAccountingBundle\Entity\AcademicYear;
 
-class LoadAcademicYears implements FixtureInterface
+class LoadAcademicYears implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**

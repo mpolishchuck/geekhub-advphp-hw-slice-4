@@ -71,11 +71,11 @@ class Group
     }
 
     /**
-     * @param AcademicYear $idFoundingYear
+     * @param AcademicYear $foundingYear
      */
-    public function setFoundingYear($idFoundingYear)
+    public function setFoundingYear($foundingYear)
     {
-        $this->foundingYear = $idFoundingYear;
+        $this->foundingYear = $foundingYear;
     }
 
     /**
@@ -87,11 +87,11 @@ class Group
     }
 
     /**
-     * @param Speciality $idSpeciality
+     * @param Speciality $speciality
      */
-    public function setSpeciality($idSpeciality)
+    public function setSpeciality($speciality)
     {
-        $this->speciality = $idSpeciality;
+        $this->speciality = $speciality;
     }
 
     /**

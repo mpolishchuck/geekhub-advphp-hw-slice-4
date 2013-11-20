@@ -2,6 +2,7 @@
 
 namespace PaulMaxwell\StudentsAccountingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping;
 
 /**
@@ -39,6 +40,11 @@ class Group
      * @Mapping\ManyToOne(targetEntity="AcademicYear", cascade={"persist"})
      */
     protected $foundingYear;
+
+    /**
+     * @Mapping\ManyToMany(targetEntity="Teacher", mappedBy="groups")
+     */
+    protected $teachers;
 
     /**
      * @return integer
@@ -112,5 +118,11 @@ class Group
         return $this->title;
     }
 
-
+    /**
+     * @return ArrayCollection
+     */
+    public function getTeachers()
+    {
+        return $this->teachers;
+    }
 }

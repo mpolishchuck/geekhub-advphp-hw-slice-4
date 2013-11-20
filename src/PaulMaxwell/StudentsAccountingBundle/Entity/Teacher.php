@@ -2,6 +2,7 @@
 
 namespace PaulMaxwell\StudentsAccountingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping;
 
 /**
@@ -27,6 +28,12 @@ class Teacher
      * @Mapping\Column(type="string")
      */
     protected $subject;
+
+    /**
+     * @Mapping\JoinTable(name="rel_teacher_group")
+     * @Mapping\ManyToMany(targetEntity="Group", inversedBy="teachers")
+     */
+    protected $groups;
 
     /**
      * @return integer
@@ -66,5 +73,13 @@ class Teacher
     public function getSubject()
     {
         return $this->subject;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

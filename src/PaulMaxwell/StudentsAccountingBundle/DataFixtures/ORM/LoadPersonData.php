@@ -15,7 +15,7 @@ class LoadPersonData implements FixtureInterface
      *
      * @param ObjectManager $manager
      */
-    function load(ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         $personData = Yaml::parse(__DIR__ . '/data/persondata.yml');
 
@@ -46,7 +46,7 @@ class LoadPersonData implements FixtureInterface
     /**
      * @return int
      */
-    function getOrder()
+    public function getOrder()
     {
         return 1;
     }

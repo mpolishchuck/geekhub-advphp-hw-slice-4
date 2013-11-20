@@ -1,0 +1,25 @@
+{% extends "PaulMaxwellStudentsAccountingBundle:Report:_abstract_list.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Group</th>
+                <th>Speciality</th>
+                <th>Student count</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for n, group in groups %}
+            <tr>
+                <td>{{ n+1 }}</td>
+                <td>{{ group.title }}</td>
+                <td>{{ group.speciality.code }} {{ group.speciality.title }}</td>
+                <td>{{ group.students.count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "PaulMaxwellStudentsAccountingBundle::layout.html.twig" %}
+
+{% block content %}
+    {% if criteria is defined %}
+        <ul class="list-unstyled">
+            {% for criterion in criteria %}
+                <li>{{ criterion }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping;
 
 /**
  * @Mapping\Entity
- * @Mapping\Table(name="person")
+ * @Mapping\Table(name="ls_person")
  */
 class Person
 {

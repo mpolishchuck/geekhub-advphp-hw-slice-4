@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping;
 
 /**
  * @Mapping\Entity
- * @Mapping\Table(name="academic_year")
+ * @Mapping\Table(name="ls_academic_year")
  */
 class AcademicYear
 {

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping;
 
 /**
  * @Mapping\Entity
- * @Mapping\Table(name="teacher")
+ * @Mapping\Table(name="ls_teacher")
  */
 class Teacher
 {

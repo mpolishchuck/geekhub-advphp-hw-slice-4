@@ -10,7 +10,16 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PaulMaxwellStudentsAccountingBundle:Default:index.html.twig');
+        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Student t');
+        $students = $query->getSingleResult();
+
+        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Teacher t');
+        $teachers = $query->getSingleResult();
+
+        return $this->render('PaulMaxwellStudentsAccountingBundle:Default:index.html.twig', array(
+            'students' => $students[array_keys($students)[0]],
+            'teachers' => $teachers[array_keys($teachers)[0]],
+        ));
     }
 
     public function specialitiesListAction()

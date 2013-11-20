@@ -76,6 +76,17 @@ class DefaultController extends Controller
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:students_list.html.twig', $twigContext);
     }
 
+    public function studentsRemoveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $studentRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Student');
+        $student = $studentRepository->findOneById($id);
+        $em->remove($student);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('paul_maxwell_students_accounting_students'));
+    }
+
     public function teachersListAction()
     {
         $teacherRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Teacher');

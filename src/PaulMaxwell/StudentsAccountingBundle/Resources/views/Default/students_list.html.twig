@@ -26,7 +26,10 @@
                     ({{ student.group.speciality.code }} {{ student.group.speciality.title }})
                 </td>
                 <td>{{ student.group.course }}</td>
-                <td>{{ student.accountingNumber }}</td>
+                <td>
+                    {{ student.accountingNumber }}
+                    (<a href="{{ url('paul_maxwell_students_accounting_students_remove', {'id': student.id}) }}">Remove</a>)
+                </td>
             </tr>
         {% endfor %}
         </tbody>

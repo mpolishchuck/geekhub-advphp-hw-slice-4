@@ -24,6 +24,11 @@ paul_maxwell_students_accounting_students_by_group:
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsList }
     requirements: { id_group: "[0-9]+" }
 
+paul_maxwell_students_accounting_students_remove:
+    pattern: /students/remove/{id}
+    defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:studentsRemove }
+    requirements: { id_group: "[0-9]+" }
+
 paul_maxwell_students_accounting_teachers:
     pattern: /teachers
     defaults: { _controller: PaulMaxwellStudentsAccountingBundle:Default:teachersList }

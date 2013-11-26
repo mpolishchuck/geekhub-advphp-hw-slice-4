@@ -5,6 +5,7 @@ namespace PaulMaxwell\StudentsAccountingBundle\Controller;
 use PaulMaxwell\StudentsAccountingBundle\Entity\Group;
 use PaulMaxwell\StudentsAccountingBundle\Entity\Speciality;
 use PaulMaxwell\StudentsAccountingBundle\StatisticCounter;
+use PaulMaxwell\StudentsAccountingBundle\StudentRemovalReporter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -123,6 +124,13 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $studentRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Student');
         $student = $studentRepository->findOneById($id);
+
+        /**
+         * @var StudentRemovalReporter $removalReporter
+         */
+        $removalReporter = $this->get('students_accounting.stud_remove_reporter');
+        $removalReporter->reportStudentRemoved($student);
+
         $em->remove($student);
         $em->flush();
 

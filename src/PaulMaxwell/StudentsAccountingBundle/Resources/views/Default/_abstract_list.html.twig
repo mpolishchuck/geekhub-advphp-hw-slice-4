@@ -1,6 +1,9 @@
 {% extends "PaulMaxwellStudentsAccountingBundle::layout.html.twig" %}
 
 {% block content %}
+    {% if top_msg is defined %}
+        <p>{{ top_msg }}</p>
+    {% endif %}
     {% if criteria is defined %}
         <ul class="list-unstyled">
             {% for criterion in criteria %}

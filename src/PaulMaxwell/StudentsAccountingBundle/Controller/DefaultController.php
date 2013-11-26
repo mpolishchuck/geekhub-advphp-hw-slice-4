@@ -4,21 +4,21 @@ namespace PaulMaxwell\StudentsAccountingBundle\Controller;
 
 use PaulMaxwell\StudentsAccountingBundle\Entity\Group;
 use PaulMaxwell\StudentsAccountingBundle\Entity\Speciality;
+use PaulMaxwell\StudentsAccountingBundle\StatisticCounter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Student t');
-        $students = $query->getSingleResult();
-
-        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Teacher t');
-        $teachers = $query->getSingleResult();
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:index.html.twig', array(
-            'students' => $students[array_keys($students)[0]],
-            'teachers' => $teachers[array_keys($teachers)[0]],
+            'students' => $statisticCounter->getStudentsCount(),
+            'teachers' => $statisticCounter->getTeachersCount(),
         ));
     }
 

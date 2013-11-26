@@ -4,35 +4,53 @@ namespace PaulMaxwell\StudentsAccountingBundle\Controller;
 
 use PaulMaxwell\StudentsAccountingBundle\Entity\Group;
 use PaulMaxwell\StudentsAccountingBundle\Entity\Speciality;
+use PaulMaxwell\StudentsAccountingBundle\StatisticCounter;
+use PaulMaxwell\StudentsAccountingBundle\StudentRemovalReporter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Student t');
-        $students = $query->getSingleResult();
-
-        $query = $this->getDoctrine()->getManager()->createQuery('SELECT COUNT(t) FROM PaulMaxwellStudentsAccountingBundle:Teacher t');
-        $teachers = $query->getSingleResult();
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:index.html.twig', array(
-            'students' => $students[array_keys($students)[0]],
-            'teachers' => $teachers[array_keys($teachers)[0]],
+            'students' => $statisticCounter->getStudentsCount(),
+            'teachers' => $statisticCounter->getTeachersCount(),
+            'groups' => $statisticCounter->getGroupsCount(),
+            'specialities' => $statisticCounter->getSpecialitiesCount(),
         ));
     }
 
     public function specialitiesListAction()
     {
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
+
         $specialities = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Speciality')->findAll();
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:specialities_list.html.twig', array(
             'specialities' => $specialities,
+            'top_msg' => sprintf(
+                'Totally we have %d specialities and %d groups.',
+                $statisticCounter->getSpecialitiesCount(),
+                $statisticCounter->getGroupsCount()
+            ),
         ));
     }
 
     public function groupsListAction($id_speciality = null)
     {
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
+
         $specialityRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Speciality');
         $groupRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Group');
 
@@ -54,12 +72,23 @@ class DefaultController extends Controller
                 ),
             );
         }
+        $twigContext['top_msg'] = sprintf(
+            'Totally we have %d groups, %d students and %d teachers.',
+            $statisticCounter->getGroupsCount(),
+            $statisticCounter->getStudentsCount(),
+            $statisticCounter->getTeachersCount()
+        );
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:groups_list.html.twig', $twigContext);
     }
 
     public function studentsListAction($id_group = null)
     {
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
+
         $studentRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Student');
         $groupRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Group');
 
@@ -81,6 +110,11 @@ class DefaultController extends Controller
                 ),
             );
         }
+        $twigContext['top_msg'] = sprintf(
+            'Totally we have %d students in %d groups.',
+            $statisticCounter->getStudentsCount(),
+            $statisticCounter->getGroupsCount()
+        );
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:students_list.html.twig', $twigContext);
     }
@@ -90,6 +124,13 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $studentRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Student');
         $student = $studentRepository->findOneById($id);
+
+        /**
+         * @var StudentRemovalReporter $removalReporter
+         */
+        $removalReporter = $this->get('students_accounting.stud_remove_reporter');
+        $removalReporter->reportStudentRemoved($student);
+
         $em->remove($student);
         $em->flush();
 
@@ -98,12 +139,22 @@ class DefaultController extends Controller
 
     public function teachersListAction()
     {
+        /**
+         * @var StatisticCounter $statisticCounter
+         */
+        $statisticCounter = $this->get('students_accounting.stat_counter');
+
         $teacherRepository = $this->getDoctrine()->getRepository('PaulMaxwell\StudentsAccountingBundle\Entity\Teacher');
 
         $teachers = $teacherRepository->findAll();
 
         return $this->render('PaulMaxwellStudentsAccountingBundle:Default:teachers_list.html.twig', array(
             'teachers' => $teachers,
+            'top_msg' => sprintf(
+                'Totally we have %d teachers involved into %d groups.',
+                $statisticCounter->getTeachersCount(),
+                $statisticCounter->getGroupsCount()
+            ),
         ));
     }
 }

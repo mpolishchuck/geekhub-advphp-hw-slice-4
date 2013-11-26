@@ -1,7 +1,0 @@
-parameters:
-#    paul_maxwell_students_accounting.example.class: PaulMaxwell\StudentsAccountingBundle\Example
-
-services:
-#    paul_maxwell_students_accounting.example:
-#        class: %paul_maxwell_students_accounting.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

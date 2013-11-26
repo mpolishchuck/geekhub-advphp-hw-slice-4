@@ -8,6 +8,18 @@
         <service id="students_accounting.stat_counter" class="PaulMaxwell\StudentsAccountingBundle\StatisticCounter">
             <argument id="doctrine" type="service" />
         </service>
+
+        <service id="students_accounting.stud_remove_reporter" class="PaulMaxwell\StudentsAccountingBundle\StudentRemovalReporter">
+            <call method="setMailer">
+                <argument id="mailer" type="service" on-invalid="ignore" />
+            </call>
+            <call method="setLogger">
+                <argument id="logger" type="service" on-invalid="ignore" />
+            </call>
+            <call method="setAdminEmail">
+                <argument>%admin_email%</argument>
+            </call>
+        </service>
     </services>
 
 </container>
